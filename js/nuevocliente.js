@@ -1,4 +1,4 @@
-import { conectarDB } from './db.js'
+import { conectarDB } from './utils/db.js'
 import { validarCliente } from './funciones.js';
 import { formulario } from './selectores.js'
 

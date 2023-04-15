@@ -1,4 +1,7 @@
-import {nombre, correo, telefono, empresa} from './selectores.js';
+import {nombre, correo, telefono, empresa, formulario} from './selectores.js';
+import UI from './classes/UI.js';
+
+const ui = new UI();
 
 const objCliente = {
     nombre: '',
@@ -11,11 +14,14 @@ export function validarCliente(evento){
     evento.preventDefault();
 
     if(nombre.value === '' || correo.value === '' || telefono.value === '' || empresa.value === ''){
-        imprimirAlerta();
+        ui.imprimirAlerta(formulario, 'Los campos son obligatorios.', 'error');
+        return;
     }
+
+    ui.imprimirAlerta(formulario, 'Se ha agregado un nuevo cliente!', 'correcto')
 
 }
 
-function imprimirAlerta(contenedor, mensaje, tipo){
-    
+function agregarCliente(cliente){
+
 }

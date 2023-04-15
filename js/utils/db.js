@@ -14,6 +14,7 @@ export function creardbClientes(){
     }
 
     dbClientes.onupgradeneeded = function (evento) {
+        
         const db = evento.target.result;
         console.log(db);
 
