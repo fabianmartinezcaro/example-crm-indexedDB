@@ -1,6 +1,6 @@
-import {conectarDB} from './db.js'
+import { conectarDB } from './db.js'
 import { validarCliente } from './funciones.js';
-import {formulario} from './selectores.js'
+import { formulario } from './selectores.js'
 
 (function () {
 
@@ -9,7 +9,6 @@ import {formulario} from './selectores.js'
     })
 
     formulario.addEventListener('submit', validarCliente)
-    
 
 
 })();

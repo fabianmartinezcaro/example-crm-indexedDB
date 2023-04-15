@@ -10,8 +10,12 @@ const objCliente = {
 export function validarCliente(evento){
     evento.preventDefault();
 
-    if(nombre === ''){
-        console.log('Nombre vacío...')
+    if(nombre.value === '' || correo.value === '' || telefono.value === '' || empresa.value === ''){
+        imprimirAlerta();
     }
 
+}
+
+function imprimirAlerta(contenedor, mensaje, tipo){
+    
 }
