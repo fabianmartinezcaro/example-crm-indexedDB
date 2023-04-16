@@ -18,7 +18,7 @@ export function creardbClientes(){
         const db = evento.target.result;
         console.log(db);
 
-        const objectStore = db.createObjectStore('crm', {
+        const objectStore = db.createObjectStore('clientes', {
             KeyPath: 'id',
             autoIncrement: true
         })
@@ -37,7 +37,7 @@ export function creardbClientes(){
 
 
 export function conectarDB(){
-    const conectarDB = window.indexedDB.open('crm', 1);
+    const conectarDB = window.indexedDB.open('dbClientes', 1);
 
     conectarDB.onerror = function () {
         console.log('Hubo un error');

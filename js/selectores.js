@@ -1,8 +1,6 @@
-// Contenedor formulario
-export const formulario = document.querySelector('#formulario')
+// Contenedor listado de clientes
+export const listadoClientes = document.querySelector('#listado-clientes');
 
-// Datos formulario
-export const nombre = document.querySelector('#nombre');
-export const correo = document.querySelector('#email');
-export const telefono = document.querySelector('#telefono');
-export const empresa = document.querySelector('#empresa');
+// Contenedor formulario
+export const formulario = document.querySelector('#formulario');
+
