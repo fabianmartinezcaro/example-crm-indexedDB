@@ -1,10 +1,9 @@
-import {creardbClientes} from './utils/db.js';
+import {creardbClientes} from './db.js'
 
-(function(){
+(function () {
 
     document.addEventListener('DOMContentLoaded', () => {
         creardbClientes();
     })
-
 
 })()
