@@ -1,6 +1,6 @@
-export function creardbClientes () {
+export let DB;
 
-    let DB;
+export function creardbClientes () {
 
     const dbClientes = window.indexedDB.open('dbClientes', 1);
 
@@ -8,8 +8,8 @@ export function creardbClientes () {
         console.log('Ha ocurrido un error');
     }
 
-    dbClientes.onsuccess = function () {
-        console.log('Se ha creado correctamente!');
+    dbClientes.onsuccess = function (evt) {
+        console.log('Se ha creado correctamente!', evt);
         DB = dbClientes.result;
         console.log(DB);
     }
@@ -31,7 +31,9 @@ export function creardbClientes () {
 
 }
 
+
 export function conectarDB () {
+
     const conectarDB = window.indexedDB.open('dbClientes', 1);
 
     conectarDB.onerror = function () {
@@ -39,6 +41,9 @@ export function conectarDB () {
     }
 
     conectarDB.onsuccess = function (evt) {
+        DB = conectarDB.result;
         console.log('Se ha completado la conexión desde funcionConectarDB', evt)
+        console.log(DB)
     }
+
 }
