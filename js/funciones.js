@@ -1,5 +1,5 @@
 import UI from "./classes/UI.js";
-import { conectarDB, DB } from "./db.js";
+import { DB } from "./db.js";
 import { formulario } from "./selectores.js";
 
 const ui = new UI();
@@ -24,8 +24,7 @@ export function validarCliente (evento) {
 }
 
 function agregarCliente(cliente){
-    console.log(cliente);
-    conectarDB();
+
     const transaction = DB.transaction(['clientes'], 'readwrite');
     const objectStore = transaction.objectStore('clientes');
 
@@ -36,7 +35,10 @@ function agregarCliente(cliente){
     }
 
     transaction.oncomplete = function () {
-        console.log('Cliente agregado!');
+        ui.mostrarAlerta(formulario, 'Cliente agregado!', 'correcto');
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 3000);
     }
 
 

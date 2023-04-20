@@ -1,4 +1,12 @@
+import { DB } from "../db.js";
+
 export default class UI{
+
+    mostrarCliente(clientes){
+        
+        const objectStore = DB.transaction('citas').objectStore('citas');
+
+    }
 
     mostrarAlerta(contenedor, mensaje, tipo){
 

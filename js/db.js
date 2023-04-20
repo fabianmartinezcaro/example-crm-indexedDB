@@ -40,10 +40,9 @@ export function conectarDB () {
         console.log('Hubo un error en la conexión...')
     }
 
-    conectarDB.onsuccess = function (evt) {
+    conectarDB.onsuccess = function () {
         DB = conectarDB.result;
-        console.log('Se ha completado la conexión desde funcionConectarDB', evt)
-        console.log(DB)
+        console.log('Se ha completado la conexión desde función ConectarDB()')
     }
 
 }
