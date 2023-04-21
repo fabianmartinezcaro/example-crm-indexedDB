@@ -60,7 +60,6 @@ export function obtenerClientes(){
             const cliente = evento.target.result;
 
             if(cliente){
-                console.log(cliente.value);
                 ui.mostrarCliente(cliente.value);
                 cliente.continue();
             }else{
