@@ -1,6 +1,6 @@
 import UI from "./classes/UI.js";
 import { DB } from "./db.js";
-import { formulario } from "./selectores.js";
+import { formulario, listadoClientes } from "./selectores.js";
 
 const ui = new UI();
 
@@ -41,5 +41,33 @@ function agregarCliente(cliente){
         }, 3000);
     }
 
+}
+
+export function obtenerClientes(){
+    const abrirConexion = window.indexedDB.open('dbClientes', 1);
+
+    abrirConexion.onerror = function () {
+        console.log('Hubo un error');
+    }
+
+    abrirConexion.onsuccess = function () {
+        console.log('Se ha conectado correctamente!')
+        let DB = abrirConexion.result;
+
+        const objectStore = DB.transaction('clientes').objectStore('clientes');
+
+        objectStore.openCursor().onsuccess = function (evento) {
+            const cliente = evento.target.result;
+
+            if(cliente){
+                console.log(cliente.value);
+                ui.mostrarCliente(cliente.value);
+                cliente.continue();
+            }else{
+                console.log('No hay registros')
+            }
+
+        }
+    }
 
 }
