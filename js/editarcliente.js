@@ -5,7 +5,8 @@ import { editarCliente } from "./funciones.js"
 
     document.addEventListener('DOMContentLoaded', () => {
         
-        editarCliente()
+        conectarDB();
+        editarCliente();
     
     })
 
