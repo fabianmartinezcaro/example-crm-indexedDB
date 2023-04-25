@@ -1,5 +1,7 @@
 import { conectarDB } from "./db.js";
 import { editarCliente } from "./funciones.js"
+import { formulario } from "./selectores.js";
+import { actualizarCliente } from "./funciones.js";
 
 (function(){
 
@@ -7,7 +9,9 @@ import { editarCliente } from "./funciones.js"
         
         conectarDB();
         editarCliente();
+        formulario.addEventListener('submit', actualizarCliente);
     
     })
+
 
 })()
