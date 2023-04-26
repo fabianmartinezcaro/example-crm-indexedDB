@@ -1,5 +1,6 @@
 import {creardbClientes} from './db.js'
-import { obtenerClientes } from './funciones.js';
+import { eliminarCliente, obtenerClientes } from './funciones.js';
+import { listadoClientes } from './selectores.js';
 
 (function () {
 
@@ -10,5 +11,7 @@ import { obtenerClientes } from './funciones.js';
     if(window.indexedDB.open('dbClientes', 1)){
         obtenerClientes();
     }
+
+    listadoClientes.addEventListener('click', eliminarCliente);
 
 })()

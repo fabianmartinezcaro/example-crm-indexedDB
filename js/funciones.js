@@ -1,6 +1,6 @@
 import UI from "./classes/UI.js";
 import { DB } from "./db.js";
-import { formulario, inputNombre, inputEmail, inputTelefono, inputEmpresa } from "./selectores.js";
+import { formulario, inputNombre, inputEmail, inputTelefono, inputEmpresa, listadoClientes } from "./selectores.js";
 
 const ui = new UI();
 let idCliente;
@@ -54,23 +54,29 @@ export function editarCliente(){
 
 }
 
-// export function eliminarCliente(id){
+export function eliminarCliente(evento){
+    if(evento.target.classList.contains('eliminar')){
+        const idEliminar = Number(evento.target.dataset.cliente);
+        const confirmar = confirm('¿Está seguro de que desea eliminar este cliente?');
+        if(confirmar){
 
-//     const transaction = DB.transaction(['clientes'], 'readwrite');
-//     const objectStore = transaction.objectStore('clientes');
+            const transaction = DB.transaction(['clientes'], 'readwrite');
+            const objectStore = transaction.objectStore('clientes');
 
-//     const cliente = objectStore.openCursor();
-//     cliente.onsuccess = function (evento) {
-//         const cursor = evento.target.result;
-//         if(cursor){
-//             if(cursor.value.id === Number(id)){
-//                 objectStore.delete(cursor.value);
-//             }
-//             cursor.continue();
-//         }
-//     }
+            objectStore.delete(idEliminar);
 
-// }
+            transaction.oncomplete = function () {
+                evento.target.parentElement.parentElement.remove();
+                console.log('Cliente eliminado...')
+            }
+
+            transaction.onerror = function (evento) {
+                console.log('No se pudo eliminar el cliente | ERROR: ', evento);
+            }
+
+        }
+    }
+}
 
 
 export function obtenerClientes(){
@@ -101,6 +107,7 @@ export function obtenerClientes(){
 
 }
 
+// Obtengo al cliente desde la base de datos para cargar nuevamente los datos al DOM con llenarFormulario()
 function obtenerRegistro(id){
 
     const transaction = DB.transaction(['clientes'], 'readwrite');
